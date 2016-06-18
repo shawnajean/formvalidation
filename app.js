@@ -3,7 +3,7 @@ Your code goes here!
  */
 
 var checkMatch = function() {
-	if( firstPasswordInput === secondPasswordInput ) {
+	if( firstPasswordInput.value === secondPasswordInput.value ) {
 		return true;
 	} else {
 		return false;
@@ -33,6 +33,7 @@ var error = document.querySelector('#error');
 You'll probably find this function useful...
  */  
 submit.onclick = function () {
+	error.innerHTML = "";
 	if( !checkMatch() ){
 		error.innerHTML = "Passwords do not match.";
 	}
