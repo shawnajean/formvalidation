@@ -3,7 +3,6 @@ Your code goes here!
  */
 
 var checkMatch = function() {
-	console.l
 	if( firstPasswordInput === secondPasswordInput ) {
 		return true;
 	} else {
