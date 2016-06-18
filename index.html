@@ -2,22 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="udacity-grader" content="http://udacity.github.io/course-web-forms/lesson2/quizCustomValidity/grader/tests.json" libraries="jsgrader" unit-tests="http://udacity.github.io/course-web-forms/lesson2/quizCustomValidity/grader/unit_tests.js">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quiz - setCustomValidity</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li:before {
+            content: "✗ ";
+        }
+
+        li.valid {
+            color: #00aa00;
+        }
+
+        li.valid:before {
+            content: "✓ ";
+        }
+
+        #error {
+            color: #cc0000;
+        }
+    </style>
 </head>
 <body>
     <h3>Create a new password</h3>
     <p>Password should meet the following requirements:</p>
     <ul>
-        <li>16-100 characters (longer is better)</li>
-        <li>At least one of these symbols: !, @, #, $, %, ^, &, *</li>
-        <li>At least one number</li>
-        <li>At least one lowercase letter</li>
-        <li>At least one uppercase letter</li>
+        <li id="length">16-100 characters (longer is better)</li>
+        <li id="symbol">At least one of these symbols: !, @, #, $, %, ^, &, *</li>
+        <li id="number">At least one number</li>
+        <li id="lower">At least one lowercase letter</li>
+        <li id="upper">At least one uppercase letter</li>
     </ul>
     
-    <div id="error" style="color: #cc0000"></div>
+    <div id="error"></div>
     
     <label>New Password
         <input id="first" type="password" placeholder="New password" autofocus>
