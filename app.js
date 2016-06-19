@@ -130,8 +130,6 @@ submit.onclick = function () {
 
 	if( validityMsg === "" ){
 		notif.innerHTML = "Password successfully updated!";
-		firstPasswordInput.value = "";
-		secondPasswordInput.value = "";
 	}
 };
 
