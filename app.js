@@ -23,7 +23,7 @@ var symbol = false;
 var number = false;
 var lower = false;
 var upper = false;
-var legal = false;
+var legal = true;
 
 var lenItem = document.querySelector('#length');
 var symItem = document.querySelector('#symbol');
