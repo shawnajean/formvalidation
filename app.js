@@ -23,6 +23,14 @@ var validate = function() {
 		symbol = false;
 	}
 
+	if( /\d/g.test(pswd) ){
+		numItem.classList.add("valid");
+		number = true;
+	} else {
+		numItem.classList.remove("valid");
+		number = false;
+	}
+
 	validated = validated && length && symbol && number && lower && upper;
 	console.log( validated );
 };
