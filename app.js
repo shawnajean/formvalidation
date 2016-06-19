@@ -6,13 +6,14 @@ var validate = function() {
 	var pswd = firstPasswordInput.value;
 	if( pswd.length >= 16 && pswd.length <= 100 ) {
 		lenItem.classList.add("valid");
-		length = true;
+		lengthLess100 = true;
+		lengthMore16 = true;
 	} else if (pswd.length > 100 ) { //too many characters
 		lenItem.classList.remove("valid");
-		length = false;
+		lengthLess100 = false;
 	} else { //too few characters
 		lenItem.classList.remove("valid");
-		length = false;
+		lengthMore16 = false;
 	}
 
 	if( /[\!\@\#\$\%\^\&\*]/g.test(pswd) ){ //includes a symbol
@@ -85,7 +86,7 @@ var secondPasswordInput = document.querySelector('#second');
 var submit = document.querySelector('#submit');
 var notif = document.querySelector('#notif');
 
-var length, symbol, number, lower, upper, validated = false;
+var lengthLess100, lengthMore16, symbol, number, lower, upper, validated = false;
 var lenItem = document.querySelector('#length');
 var symItem = document.querySelector('#symbol');
 var numItem = document.querySelector('#number');
@@ -98,7 +99,12 @@ You'll probably find this function useful...
 submit.onclick = function () {
 	if( !checkMatch() ){
 		firstPasswordInput.setCustomValidity( "Passwords do not match." );
-	} else if( validated ){
+	} else if( !lengthLess100 ) {
+		firstPasswordInput.setCustomValidity( "Must be fewer than 100 characters.");
+	} else if( !lengthLess100 ) {
+		firstPasswordInput.setCustomValidity( "Must be at least 16 characters.");
+	}
+	else if( validated ){
 		notif.innerHTML = "Password successfully updated!";
 		firstPasswordInput.value = "";
 		secondPasswordInput.value = "";
