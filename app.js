@@ -113,6 +113,18 @@ submit.onclick = function () {
 	if( !symbol ) {
 		validityMsg +=  "* Must include a symbol.\n";
 	}
+	if( !number ) {
+		validityMsg +=  "* Must include a number.\n";
+	}
+	if( !lower ) {
+		validityMsg +=  "* Must include a lowercase letter.\n";
+	}
+	if( !upper ) {
+		validityMsg +=  "* Must include a uppercase letter.\n";
+	}
+	if( !legal ) {
+		validityMsg +=  "* You have used an illegal character.\n";
+	}
 
 	firstPasswordInput.setCustomValidity( validityMsg );
 
