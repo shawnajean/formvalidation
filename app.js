@@ -3,7 +3,8 @@ Your code goes here!
  */
 
 var validate = function() {
-	if( firstPasswordInput.value.length > 16 && firstPasswordInput.value.length < 100 ) {
+	console.log(firstPasswordInput.value.length);
+	if( firstPasswordInput.value.length >= 16 && firstPasswordInput.value.length <= 100 ) {
 		lenItem.classList.add("valid");
 		length = true;
 	} else if (firstPasswordInput.value.length > 100 ) { //too many characters
@@ -13,6 +14,10 @@ var validate = function() {
 		lenItem.classList.remove("valid");
 		length = false;
 	}
+
+
+
+	validated = validated && length && symbol && number && lower && upper;
 };
 
 var checkMatch = function() {
@@ -43,7 +48,7 @@ var secondPasswordInput = document.querySelector('#second');
 var submit = document.querySelector('#submit');
 var notif = document.querySelector('#notif');
 
-var length, symbol, number, lower, upper = false;
+var length, symbol, number, lower, upper, validated = false;
 var lenItem = document.querySelector('#length');
 var symItem = document.querySelector('#symbol');
 var numItem = document.querySelector('#number');
@@ -58,9 +63,10 @@ submit.onclick = function () {
 	notif.classList.remove("success");
 	if( !checkMatch() ){
 		notif.innerHTML = "Passwords do not match.";
-	} else {
+	} else if( validated ){
 		notif.classList.add("success");
 		notif.innerHTML = "Password successfully updated!";
+		firstPasswordInput.value, secondPasswordInput.value = "";
 	}
 };
 
