@@ -100,8 +100,7 @@ var checkMatch = function() {
 You'll probably find this function useful...
  */  
 submit.onclick = function () {
-	console.log("16: " + lengthMore16);
-	console.log("100: " + lengthLess100);
+	firstPasswordInput.setCustomValidity('');
 	if( !checkMatch() ){
 		firstPasswordInput.setCustomValidity( "Passwords do not match." );
 	} else if( !lengthLess100 ) {
