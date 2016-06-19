@@ -23,13 +23,15 @@ var symbol = false;
 var number = false;
 var lower = false;
 var upper = false;
-var validated = false;
+var legal = false;
 
 var lenItem = document.querySelector('#length');
 var symItem = document.querySelector('#symbol');
 var numItem = document.querySelector('#number');
 var lowItem = document.querySelector('#lower');
 var upItem = document.querySelector('#upper');
+
+var validityMsg = "";
 
 var validate = function() {
 	var pswd = firstPasswordInput.value;
@@ -80,12 +82,10 @@ var validate = function() {
 	}
 
 	if( /[^A-z0-9\!\@\#\$\%\^\&\*]/g.test(pswd) ) { //checks for disallowed characters
-		validated = false;
+		legal = true;
 	} else {
-		validated = true;
+		legal = true;
 	}
-
-	validated = validated && length && symbol && number && lower && upper;
 };
 
 var checkMatch = function() {
@@ -100,17 +100,23 @@ var checkMatch = function() {
 You'll probably find this function useful...
  */  
 submit.onclick = function () {
-	firstPasswordInput.setCustomValidity('');
+	validityMsg = ('');
 	if( !checkMatch() ){
-		firstPasswordInput.setCustomValidity( "Passwords do not match." );
-	} else if( !lengthLess100 ) {
-		firstPasswordInput.setCustomValidity( "Must be fewer than 100 characters.");
-	} else if( !lengthMore16 ) {
-		firstPasswordInput.setCustomValidity( "Must be at least 16 characters.");
-	} else if( !symbol ) {
-		firstPasswordInput.setCustomValidity( "A symbol must be included.");
+		validityMsg += "Passwords do not match.\n";
 	}
-	else if( validated ){
+	if( !lengthLess100 ) {
+		validityMsg += "Must be fewer than 100 characters.\n";
+	}
+	if( !lengthMore16 ) {
+		validityMsg +=  "Must be at least 16 characters.\n";
+	}
+	if( !symbol ) {
+		validityMsg +=  "Must include a symbol.\n";
+	}
+
+	firstPasswordInput.setCustomValidity( validityMsg );
+
+	if( validityMsg === "" ){
 		notif.innerHTML = "Password successfully updated!";
 		firstPasswordInput.value = "";
 		secondPasswordInput.value = "";
