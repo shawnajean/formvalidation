@@ -107,6 +107,8 @@ submit.onclick = function () {
 		firstPasswordInput.setCustomValidity( "Must be fewer than 100 characters.");
 	} else if( !lengthMore16 ) {
 		firstPasswordInput.setCustomValidity( "Must be at least 16 characters.");
+	} else if( !symbol ) {
+		firstPasswordInput.setCustomValidity( "Must include a symbol.");
 	}
 	else if( validated ){
 		notif.innerHTML = "Password successfully updated!";
