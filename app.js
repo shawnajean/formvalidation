@@ -1,6 +1,35 @@
 /*
-Your code goes here!
+You might find you want to use RegEx. As this quiz is about setCustomValidity
+and not RegEx, here are some RegEx patterns you might find useful:
+
+match one of the required symbols: /[\!\@\#\$\%\^\&\*]/g
+match a number: /[0-9]/g or /\d/g
+match a lowercase letter: /[a-z]/g
+match an uppercase letter: /[A-Z]/g
+match a character that isn't allowed in this password: /[^A-z0-9\!\@\#\$\%\^\&\*]/g
  */
+
+/*
+Grabbing a few inputs to help you get started...
+ */
+var firstPasswordInput = document.querySelector('#first');
+var secondPasswordInput = document.querySelector('#second');
+var submit = document.querySelector('#submit');
+var notif = document.querySelector('#notif');
+
+var lengthLess100 = true;
+var lengthMore16 = false;
+var symbol = false;
+var number = false;
+var lower = false;
+var upper = false;
+var validated = false;
+
+var lenItem = document.querySelector('#length');
+var symItem = document.querySelector('#symbol');
+var numItem = document.querySelector('#number');
+var lowItem = document.querySelector('#lower');
+var upItem = document.querySelector('#upper');
 
 var validate = function() {
 	var pswd = firstPasswordInput.value;
@@ -11,9 +40,11 @@ var validate = function() {
 	} else if (pswd.length > 100 ) { //too many characters
 		lenItem.classList.remove("valid");
 		lengthLess100 = false;
+		lengthMore16 = true;
 	} else { //too few characters
 		lenItem.classList.remove("valid");
 		lengthMore16 = false;
+		lengthLess100 = true;
 	}
 
 	if( /[\!\@\#\$\%\^\&\*]/g.test(pswd) ){ //includes a symbol
@@ -55,12 +86,10 @@ var validate = function() {
 	}
 
 	validated = validated && length && symbol && number && lower && upper;
-	console.log( validated );
 };
 
 var checkMatch = function() {
 	if( firstPasswordInput.value === secondPasswordInput.value ) {
-		console.log('true');
 		return true;
 	} else {
 		return false;
@@ -68,35 +97,11 @@ var checkMatch = function() {
 };
 
 /*
-You might find you want to use RegEx. As this quiz is about setCustomValidity
-and not RegEx, here are some RegEx patterns you might find useful:
-
-match one of the required symbols: /[\!\@\#\$\%\^\&\*]/g
-match a number: /[0-9]/g or /\d/g
-match a lowercase letter: /[a-z]/g
-match an uppercase letter: /[A-Z]/g
-match a character that isn't allowed in this password: /[^A-z0-9\!\@\#\$\%\^\&\*]/g
- */
-
-/*
-Grabbing a few inputs to help you get started...
- */
-var firstPasswordInput = document.querySelector('#first');
-var secondPasswordInput = document.querySelector('#second');
-var submit = document.querySelector('#submit');
-var notif = document.querySelector('#notif');
-
-var lengthLess100, lengthMore16, symbol, number, lower, upper, validated = false;
-var lenItem = document.querySelector('#length');
-var symItem = document.querySelector('#symbol');
-var numItem = document.querySelector('#number');
-var lowItem = document.querySelector('#lower');
-var upItem = document.querySelector('#upper');
-
-/*
 You'll probably find this function useful...
  */  
 submit.onclick = function () {
+	console.log("16: " + lengthMore16);
+	console.log("100: " + lengthLess100);
 	if( !checkMatch() ){
 		firstPasswordInput.setCustomValidity( "Passwords do not match." );
 	} else if( !lengthLess100 ) {
