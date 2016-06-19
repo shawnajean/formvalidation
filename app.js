@@ -47,6 +47,12 @@ var validate = function() {
 		upper = false;
 	}
 
+	if( /[^A-z0-9\!\@\#\$\%\^\&\*]/g.test(pswd) ) { //checks for disallowed characters
+		validated = false;
+	} else {
+		validated = true;
+	}
+
 	validated = validated && length && symbol && number && lower && upper;
 	console.log( validated );
 };
