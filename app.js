@@ -102,16 +102,16 @@ You'll probably find this function useful...
 submit.onclick = function () {
 	validityMsg = ('');
 	if( !checkMatch() ){
-		validityMsg += "Passwords do not match.\n";
+		validityMsg += "* Passwords do not match.\n";
 	}
 	if( !lengthLess100 ) {
-		validityMsg += "Must be fewer than 100 characters.\n";
+		validityMsg += "* Must be fewer than 100 characters.\n";
 	}
 	if( !lengthMore16 ) {
-		validityMsg +=  "Must be at least 16 characters.\n";
+		validityMsg +=  "* Must be at least 16 characters.\n";
 	}
 	if( !symbol ) {
-		validityMsg +=  "Must include a symbol.\n";
+		validityMsg +=  "* Must include a symbol.\n";
 	}
 
 	firstPasswordInput.setCustomValidity( validityMsg );
