@@ -99,7 +99,7 @@ submit.onclick = function () {
 	notif.innerHTML = "";
 	notif.classList.remove("success");
 	if( !checkMatch() ){
-		notif.innerHTML = "Passwords do not match.";
+		firstPasswordInput.setCustomValidity( "Passwords do not match." );
 	} else if( validated ){
 		notif.classList.add("success");
 		notif.innerHTML = "Password successfully updated!";
