@@ -4,6 +4,7 @@ Your code goes here!
 
 var checkMatch = function() {
 	if( firstPasswordInput.value === secondPasswordInput.value ) {
+		console.log('true');
 		return true;
 	} else {
 		return false;
@@ -27,14 +28,20 @@ Grabbing a few inputs to help you get started...
 var firstPasswordInput = document.querySelector('#first');
 var secondPasswordInput = document.querySelector('#second');
 var submit = document.querySelector('#submit');
-var error = document.querySelector('#error');
+var notif = document.querySelector('#notif');
 
 /*
 You'll probably find this function useful...
  */  
 submit.onclick = function () {
-	error.innerHTML = "";
+	notif.innerHTML = "";
+	notif.classList.remove("success");
 	if( !checkMatch() ){
-		error.innerHTML = "Passwords do not match.";
+		notif.innerHTML = "Passwords do not match.";
+	} else {
+		notif.classList.add("success");
+		notif.innerHTML = "Password successfully updated!";
 	}
 };
+
+firstPasswordInput.addEventListener('keyup',function(){alert(input.value);});

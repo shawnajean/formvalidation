@@ -22,8 +22,12 @@
             content: "✓ ";
         }
 
-        #error {
+        #notif {
             color: #cc0000;
+        }
+
+        #notif.success {
+            color: #00aa00;
         }
     </style>
 </head>
@@ -38,7 +42,7 @@
         <li id="upper">At least one uppercase letter</li>
     </ul>
     
-    <div id="error"></div>
+    <div id="notif"></div>
     
     <label>New Password
         <input id="first" type="password" placeholder="New password" autofocus>
