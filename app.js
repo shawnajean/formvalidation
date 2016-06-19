@@ -82,7 +82,7 @@ var validate = function() {
 	}
 
 	if( /[^A-z0-9\!\@\#\$\%\^\&\*]/g.test(pswd) ) { //checks for disallowed characters
-		legal = true;
+		legal = false;
 	} else {
 		legal = true;
 	}
