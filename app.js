@@ -101,7 +101,7 @@ submit.onclick = function () {
 		firstPasswordInput.setCustomValidity( "Passwords do not match." );
 	} else if( !lengthLess100 ) {
 		firstPasswordInput.setCustomValidity( "Must be fewer than 100 characters.");
-	} else if( !lengthLess100 ) {
+	} else if( !lengthMore16 ) {
 		firstPasswordInput.setCustomValidity( "Must be at least 16 characters.");
 	}
 	else if( validated ){
