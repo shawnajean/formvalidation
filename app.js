@@ -15,7 +15,7 @@ var validate = function() {
 		length = false;
 	}
 
-	if( /[\!\@\#\$\%\^\&\*]/g.test(pswd) ){
+	if( /[\!\@\#\$\%\^\&\*]/g.test(pswd) ){ //includes a symbol
 		symItem.classList.add("valid");
 		symbol = true;
 	} else {
@@ -23,7 +23,7 @@ var validate = function() {
 		symbol = false;
 	}
 
-	if( /\d/g.test(pswd) ){
+	if( /\d/g.test(pswd) ){ //includes a number
 		numItem.classList.add("valid");
 		number = true;
 	} else {
@@ -31,12 +31,20 @@ var validate = function() {
 		number = false;
 	}
 
-	if( /[a-z]/g.test(pswd) ){
+	if( /[a-z]/g.test(pswd) ){ //includes lowercase letter
 		lowItem.classList.add("valid");
 		lower = true;
 	} else {
 		lowItem.classList.remove("valid");
 		lower = false;
+	}
+
+	if( /[A-Z]/g.test(pswd) ){ //includes uppercase letter
+		upItem.classList.add("valid");
+		upper = true;
+	} else {
+		upItem.classList.remove("valid");
+		upper = false;
 	}
 
 	validated = validated && length && symbol && number && lower && upper;
