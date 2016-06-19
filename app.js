@@ -96,14 +96,12 @@ var upItem = document.querySelector('#upper');
 You'll probably find this function useful...
  */  
 submit.onclick = function () {
-	notif.innerHTML = "";
-	notif.classList.remove("success");
 	if( !checkMatch() ){
 		firstPasswordInput.setCustomValidity( "Passwords do not match." );
 	} else if( validated ){
-		notif.classList.add("success");
 		notif.innerHTML = "Password successfully updated!";
-		firstPasswordInput.value, secondPasswordInput.value = "";
+		firstPasswordInput.value = "";
+		secondPasswordInput.value = "";
 	}
 };
 
