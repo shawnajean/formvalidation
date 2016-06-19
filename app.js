@@ -3,11 +3,9 @@ Your code goes here!
  */
 
 var validate = function() {
-	console.log('this');
 	if( firstPasswordInput.value.length > 16 && firstPasswordInput.value.length < 100 ) {
 		lenItem.classList.add("valid");
 		length = true;
-		console.log('added');
 	} else if (firstPasswordInput.value.length > 100 ) { //too many characters
 		lenItem.classList.remove("valid");
 		length = false;
