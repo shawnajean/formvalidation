@@ -3,11 +3,11 @@ Your code goes here!
  */
 
 var validate = function() {
-	console.log(firstPasswordInput.value.length);
-	if( firstPasswordInput.value.length >= 16 && firstPasswordInput.value.length <= 100 ) {
+	var pswd = firstPasswordInput.value;
+	if( pswd.length >= 16 && pswd.length <= 100 ) {
 		lenItem.classList.add("valid");
 		length = true;
-	} else if (firstPasswordInput.value.length > 100 ) { //too many characters
+	} else if (pswd.length > 100 ) { //too many characters
 		lenItem.classList.remove("valid");
 		length = false;
 	} else { //too few characters
@@ -15,9 +15,16 @@ var validate = function() {
 		length = false;
 	}
 
-
+	if( /[\!\@\#\$\%\^\&\*]/g.test(pswd) ){
+		symItem.classList.add("valid");
+		symbol = true;
+	} else {
+		symItem.classList.remove("valid");
+		symbol = false;
+	}
 
 	validated = validated && length && symbol && number && lower && upper;
+	console.log( validated );
 };
 
 var checkMatch = function() {
