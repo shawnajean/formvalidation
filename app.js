@@ -31,6 +31,14 @@ var validate = function() {
 		number = false;
 	}
 
+	if( /[a-z]/g.test(pswd) ){
+		lowItem.classList.add("valid");
+		lower = true;
+	} else {
+		lowItem.classList.remove("valid");
+		lower = false;
+	}
+
 	validated = validated && length && symbol && number && lower && upper;
 	console.log( validated );
 };
